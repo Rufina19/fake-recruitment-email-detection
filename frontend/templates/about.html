@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>About - RecruitShield AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body data-page="about">
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">RecruitShield AI</div>
+        <nav>
+            <a href="{{ url_for('ui.dashboard_page') }}" class="nav-link">Dashboard</a>
+            <a href="{{ url_for('ui.email_analysis_page') }}" class="nav-link">Email Analysis</a>
+            <a href="{{ url_for('ui.reports_page') }}" class="nav-link">Reports</a>
+            <a href="{{ url_for('ui.about_page') }}" class="nav-link active">About</a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>About RecruitShield AI</h1>
+            <p>Deep learning defense against fake recruitment emails.</p>
+        </header>
+        <section class="grid-two">
+            <div class="glass-card">
+                <h2>Why Detect Fake Recruitment Emails?</h2>
+                <p>
+                    Recruitment fraud is a rapidly growing attack vector where attackers pose as legitimate employers
+                    to steal personal data, collect money, or compromise devices. These scams often exploit job seekers'
+                    urgency and optimism, combining social engineering with convincing branding.
+                </p>
+                <p>
+                    Detecting these threats early protects candidates from identity theft, financial loss, and long-term
+                    reputational damage. Organizations can also use these insights to harden their talent acquisition
+                    channels and communication policies.
+                </p>
+            </div>
+            <div class="glass-card illustration-card">
+                <div class="cyber-illustration">
+                    <div class="shield"></div>
+                    <div class="lock"></div>
+                    <div class="radar-ring ring-1"></div>
+                    <div class="radar-ring ring-2"></div>
+                    <div class="radar-dot dot-1"></div>
+                    <div class="radar-dot dot-2"></div>
+                </div>
+                <p class="illustration-caption">
+                    A cyber defense shield continuously scanning recruitment emails for high-risk anomalies.
+                </p>
+            </div>
+        </section>
+        <section class="glass-card">
+            <h2>How the AI System Works</h2>
+            <ol class="about-list">
+                <li><strong>Preprocessing &amp; Normalization</strong> – Incoming emails are cleaned using NLP:
+                    lowercasing, tokenization, stopword removal, lemmatization, and special character handling.</li>
+                <li><strong>Contextual BERT Embeddings</strong> – Each token is embedded using a pre-trained
+                    BERT model to capture deep semantic context from recruitment-related phrases.</li>
+                <li><strong>Hybrid Detection Engine</strong> – A hybrid CNN + LSTM + Attention network learns both
+                    local n-gram patterns (e.g. payment language) and long-range dependencies (e.g. offer structure).</li>
+                <li><strong>Risk Scoring &amp; Explainability</strong> – The system produces fake/genuine probabilities,
+                    maps them to a risk band, and surfaces linguistic and domain-based signals as human-readable reasons.</li>
+                <li><strong>Audit &amp; Reporting</strong> – Every analysis is stored in a secure SQLite-backed
+                    repository, powering dashboards, trends, and forensics.</li>
+            </ol>
+        </section>
+    </main>
+</div>
+</body>
+</html>
+

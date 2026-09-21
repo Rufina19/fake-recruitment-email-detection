@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Analysis Reports - RecruitShield AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body data-page="reports">
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">RecruitShield AI</div>
+        <nav>
+            <a href="{{ url_for('ui.dashboard_page') }}" class="nav-link">Dashboard</a>
+            <a href="{{ url_for('ui.email_analysis_page') }}" class="nav-link">Email Analysis</a>
+            <a href="{{ url_for('ui.reports_page') }}" class="nav-link active">Reports</a>
+            <a href="{{ url_for('ui.about_page') }}" class="nav-link">About</a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Analysis Reports</h1>
+            <p>Audit trail of all scanned recruitment emails.</p>
+        </header>
+        <section class="glass-card">
+            <div class="filters-row">
+                <input type="text" id="search-input" placeholder="Search by Email ID or subject..." />
+                <select id="filter-risk">
+                    <option value="">All Risk Levels</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <select id="filter-prediction">
+                    <option value="">All Results</option>
+                    <option value="Fake">Fake</option>
+                    <option value="Genuine">Genuine</option>
+                </select>
+                <button id="filter-apply" class="primary-btn">Apply</button>
+            </div>
+            <div class="scan-list" id="reports-list"></div>
+        </section>
+    </main>
+</div>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
+

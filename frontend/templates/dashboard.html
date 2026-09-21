@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Fake Recruitment Email Detection - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-page="dashboard">
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">RecruitShield AI</div>
+        <nav>
+            <a href="{{ url_for('ui.dashboard_page') }}" class="nav-link active">Dashboard</a>
+            <a href="{{ url_for('ui.email_analysis_page') }}" class="nav-link">Email Analysis</a>
+            <a href="{{ url_for('ui.reports_page') }}" class="nav-link">Reports</a>
+            <a href="{{ url_for('ui.about_page') }}" class="nav-link">About</a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Threat Detection Overview</h1>
+            <p>Monitoring fake recruitment attempts across your inbox.</p>
+        </header>
+        <section class="cards-row">
+            <div class="glass-card stat-card" id="card-total-emails">
+                <h3>Total Emails</h3>
+                <p class="stat-value" id="total-emails">0</p>
+            </div>
+            <div class="glass-card stat-card" id="card-fraud">
+                <h3>Fraud Detected</h3>
+                <p class="stat-value danger" id="fraud-detected">0</p>
+            </div>
+            <div class="glass-card stat-card" id="card-genuine">
+                <h3>Genuine Emails</h3>
+                <p class="stat-value success" id="genuine-emails">0</p>
+            </div>
+        </section>
+        <section class="grid-two">
+            <div class="glass-card">
+                <h2>Fraud Detection Overview</h2>
+                <canvas id="fraudOverviewChart"></canvas>
+            </div>
+            <div class="glass-card">
+                <h2>Recent Activity</h2>
+                <ul class="activity-list" id="recent-activity-list">
+                    <!-- Filled by JS -->
+                </ul>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
+

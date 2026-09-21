@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Email Analysis - RecruitShield AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-page="analysis">
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">RecruitShield AI</div>
+        <nav>
+            <a href="{{ url_for('ui.dashboard_page') }}" class="nav-link">Dashboard</a>
+            <a href="{{ url_for('ui.email_analysis_page') }}" class="nav-link active">Email Analysis</a>
+            <a href="{{ url_for('ui.reports_page') }}" class="nav-link">Reports</a>
+            <a href="{{ url_for('ui.about_page') }}" class="nav-link">About</a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1>Email Threat Analysis</h1>
+            <p>Paste or upload a recruitment email to assess fraud risk.</p>
+        </header>
+        <section class="grid-two analysis-grid">
+            <div class="glass-card">
+                <h2>Input Suspected Job Email</h2>
+                <form id="analysis-form">
+                    <label>Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Email subject..." />
+
+                    <label>Email Content</label>
+                    <textarea id="email_text" name="email_text" rows="12" placeholder="Paste email or job description here..."></textarea>
+
+                    <div class="inline-alert warning hidden" id="analysis-warning"></div>
+                    <div class="file-row">
+                        <label class="file-label">
+                            <input type="file" id="file" name="file" accept=".txt,.csv" />
+                            <span>Upload .txt or .csv</span>
+                        </label>
+                        <button type="button" id="analyze-btn" class="primary-btn">Scan Email</button>
+                    </div>
+                    <p class="hint">Your data is processed securely and only stored as anonymized analysis reports.</p>
+                    <p class="error-message" id="analysis-error"></p>
+                </form>
+            </div>
+            <div class="glass-card analysis-right">
+                <div class="analysis-header">
+                    <h2>Analysis Result</h2>
+                    <span id="prediction-pill" class="prediction-pill">—</span>
+                </div>
+                <div id="result-section" class="result-section hidden">
+                    <div class="risk-top">
+                        <div class="risk-label">
+                            <span>Risk Level</span>
+                            <span id="result-risk"></span>
+                        </div>
+                        <div class="risk-bar">
+                            <div id="risk-bar-fill" class="risk-bar-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-subcard">
+                        <div class="subcard-header">
+                            <h3>Fraud Probability Analysis</h3>
+                        </div>
+                        <div class="donut-wrap">
+                            <canvas id="probabilityChart"></canvas>
+                            <div class="donut-center">
+                                <div class="donut-value" id="donut-value">—</div>
+                                <div class="donut-caption" id="donut-caption">Genuine</div>
+                            </div>
+                            <div class="probability-legend">
+                                <div><span class="dot red"></span> Fraud Probability: <span id="fraud-pct">—</span></div>
+                                <div><span class="dot green"></span> Genuine Probability: <span id="genuine-pct">—</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <details class="glass-subcard details-card" id="explain-details">
+                        <summary>Reasons, signals & suspicious keywords</summary>
+                        <div class="details-body">
+                            <div class="reasons">
+                                <h3>Reasons & Signals</h3>
+                                <ul id="result-reasons"></ul>
+                            </div>
+                            <div class="keywords">
+                                <h3>Suspicious Keywords</h3>
+                                <div id="result-keywords" class="keyword-pill-row"></div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                <div id="result-placeholder" class="placeholder">
+                    Run an analysis to see AI-driven insights and risk scoring.
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
+
