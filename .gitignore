@@ -31,3 +31,6 @@ backend/analysis_reports.db
 *.tmp
 *.bak
 *.swp
+
+*.h5
+*.pkl
